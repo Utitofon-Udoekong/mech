@@ -1,0 +1,148 @@
+Metadata-Version: 2.1
+Name: open-aea
+Version: 1.65.0
+Summary: Open Autonomous Economic Agent framework (without vendor lock-in)
+Home-page: https://github.com/valory-xyz/open-aea.git
+Author: Valory AG
+License: Apache-2.0
+Project-URL: Bug Reports, https://github.com/valory-xyz/open-aea/issues
+Project-URL: Source, https://github.com/valory-xyz/open-aea
+Keywords: aea open-aea autonomous-economic-agents agent-framework multi-agent-systems multi-agent cryptocurrency cryptocurrencies dezentralized dezentralized-network
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Communications
+Classifier: Topic :: Internet
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Classifier: Topic :: System
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.md
+Requires-Dist: semver<3.0.0,>=2.9.1
+Requires-Dist: base58<3.0.0,>=1.0.3
+Requires-Dist: jsonschema<4.4.0,>=4.3.0
+Requires-Dist: packaging<24.0,>=23.1
+Requires-Dist: protobuf<4.25.0,>=4.21.6
+Requires-Dist: pymultihash==0.8.2
+Requires-Dist: pyyaml<7,>=6.0.1
+Requires-Dist: requests<3,>=2.28.1
+Requires-Dist: python-dotenv<1.0.1,>=0.14.0
+Requires-Dist: ecdsa<0.17.0,>=0.15
+Requires-Dist: morphys>=1.0
+Requires-Dist: py-multibase>=1.0.0
+Requires-Dist: py-multicodec>=0.2.0
+Provides-Extra: all
+Requires-Dist: click<9,>=8.1.0; extra == "all"
+Requires-Dist: pytest<7.3.0,>=7.0.0; extra == "all"
+Requires-Dist: jsonschema<4.4.0,>=4.3.0; extra == "all"
+Requires-Dist: packaging<24.0,>=23.1; extra == "all"
+Requires-Dist: semver<3.0.0,>=2.9.1; extra == "all"
+Requires-Dist: coverage<8.0.0,>=6.4.4; extra == "all"
+Requires-Dist: pyyaml<9,>=6.0.1; extra == "all"
+Provides-Extra: cli
+Requires-Dist: click<9,>=8.1.0; extra == "cli"
+Requires-Dist: pyyaml<9,>=6.0.1; extra == "cli"
+Requires-Dist: packaging<24.0,>=23.1; extra == "cli"
+Requires-Dist: pytest<7.3.0,>=7.0.0; extra == "cli"
+Requires-Dist: coverage<8.0.0,>=6.4.4; extra == "cli"
+Requires-Dist: jsonschema<4.4.0,>=4.3.0; extra == "cli"
+Requires-Dist: semver<3.0.0,>=2.9.1; extra == "cli"
+Provides-Extra: test_tools
+Requires-Dist: click<9,>=8.1.0; extra == "test-tools"
+Requires-Dist: pyyaml<9,>=6.0.1; extra == "test-tools"
+Requires-Dist: packaging<24.0,>=23.1; extra == "test-tools"
+Requires-Dist: pytest<7.3.0,>=7.0.0; extra == "test-tools"
+Requires-Dist: coverage<8.0.0,>=6.4.4; extra == "test-tools"
+Requires-Dist: jsonschema<4.4.0,>=4.3.0; extra == "test-tools"
+Requires-Dist: semver<3.0.0,>=2.9.1; extra == "test-tools"
+
+<h1 align="center">
+    <b>Open AEA Framework</b>
+</h1>
+
+<p align="center">
+  <a href="https://pypi.org/project/open-aea/">
+    <img alt="PyPI" src="https://img.shields.io/pypi/v/open-aea">
+  </a>
+  <a href="https://pypi.org/project/open-aea/">
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/open-aea">
+  </a>
+  <a>
+    <img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/open-aea">
+  </a>
+  <a href="https://github.com/valory-xyz/open-aea/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/pypi/l/open-aea">
+  </a>
+  <a href="https://pypi.org/project/open-aea/">
+    <img alt="Downloads" src="https://img.shields.io/pypi/dm/open-aea">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/valory-xyz/open-aea/actions/workflows/workflow.yml">
+    <img alt="AEA framework sanity checks and tests" src="https://github.com/valory-xyz/open-aea/workflows/AEA%20framework%20sanity%20checks%20and%20tests/badge.svg?branch=main">
+  </a>
+  <a href="">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/valory-xyz/open-aea">
+  </a>
+  <a href="https://img.shields.io/badge/lint-flake8-blueviolet">
+    <img alt="flake8" src="https://img.shields.io/badge/lint-flake8-yellow" >
+  </a>
+  <a href="https://github.com/python/mypy">
+    <img alt="mypy" src="https://img.shields.io/badge/static%20check-mypy-blue">
+  </a>
+  <a href="https://github.com/psf/black">
+    <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black">
+  </a>
+  <a href="https://github.com/PyCQA/bandit">
+    <img alt="mypy" src="https://img.shields.io/badge/security-bandit-lightgrey">
+  </a>
+</p>
+
+<p align="center">
+A framework for autonomous economic agent (AEA) development with no vendor lock-in
+</p>
+
+This is a fork of <a href="https://github.com/fetchai/agents-aea">the original AEA project</a> with the benefit that all vendor lock-in at the package level is removed. This means, there are no dependencies on centrally hosted registries for agent packages and the AEA itself does not prefer any package vendor over another. Where feasible, compatibility with the original AEA framework is maintained.
+
+
+## Get started developing AEAs
+
+1. Create and launch a clean virtual environment with Python 3.10 (any Python `>=` 3.8 works):
+
+       pipenv --python 3.10 && pipenv shell
+
+2. Install the package from [PyPI](https://pypi.org/project/open-aea/):
+
+       pip install open-aea[all]
+
+    Or, if you use `zsh` rather than `bash`:
+
+       pip install "open-aea[all]"
+
+3. Then, build your agent as described in the [docs](https://open-aea.docs.autonolas.tech/).
+
+
+## Cite
+
+If you are using our software in a publication, please
+consider to cite it with the following BibTex entry:
+
+```
+@misc{agents-aea,
+  Author = {Marco Favorito and David Minarsch and Ali Hosseini and Aristotelis Triantafyllidis and Diarmid Campbell and Oleg Panasevych and Kevin Chen and Yuri Turchenkov and Lokman Rahmani and Jiří Vestfál and James Riehl and 8baller and Adamantios Zaras and David Vilela and Michiel Karrenbelt and Viraj Patel},
+  Title = {Open Autonomous Economic Agent (AEA) Framework},
+  Year = {2021},
+}
+```

@@ -1,0 +1,2 @@
+[aea.cli]
+ipfs_cli_command = aea_cli_ipfs.core:ipfs

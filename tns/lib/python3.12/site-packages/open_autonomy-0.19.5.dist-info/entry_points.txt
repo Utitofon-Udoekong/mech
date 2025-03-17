@@ -1,0 +1,2 @@
+[console_scripts]
+autonomy = autonomy.cli:cli

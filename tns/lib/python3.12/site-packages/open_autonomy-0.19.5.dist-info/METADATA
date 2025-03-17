@@ -1,0 +1,190 @@
+Metadata-Version: 2.2
+Name: open-autonomy
+Version: 0.19.5
+Summary: A framework for the creation of autonomous agent services.
+Home-page: https://github.com/valory-xyz/open-autonomy.git
+Author: Valory AG
+License: Apache-2.0
+Project-URL: Bug Reports, https://github.com/valory-xyz/open-autonomy/issues
+Project-URL: Source, https://github.com/valory/open-autonomy
+Keywords: autonomy open-autonomy aea open-aea autonomous-economic-agents agent-framework multi-agent-systems multi-agent cryptocurrency cryptocurrencies dezentralized dezentralized-network
+Classifier: Environment :: Console
+Classifier: Environment :: Web Environment
+Classifier: Development Status :: 2 - Pre-Alpha
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: MacOS
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: Unix
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: Communications
+Classifier: Topic :: Internet
+Classifier: Topic :: Scientific/Engineering
+Classifier: Topic :: Software Development
+Classifier: Topic :: System
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+License-File: AUTHORS.md
+Requires-Dist: Flask<3.0.0,>=2.0.2
+Requires-Dist: open-aea[all]==1.65.0
+Requires-Dist: watchdog>=2.1.6
+Requires-Dist: pytest==7.2.1
+Requires-Dist: valory-docker-compose==1.29.3
+Requires-Dist: werkzeug==2.0.3
+Requires-Dist: docker==6.1.2
+Requires-Dist: hexbytes
+Requires-Dist: jsonschema<4.4.0,>=4.3.0
+Requires-Dist: protobuf<4.25.0,>=4.21.6
+Requires-Dist: gql==3.5.0
+Requires-Dist: requests<2.31.2,>=2.28.1
+Requires-Dist: requests-toolbelt==1.0.0
+Requires-Dist: aiohttp<4.0.0,>=3.8.5
+Requires-Dist: typing_extensions>=3.10.0.2
+Requires-Dist: click<9,>=8.1.0
+Requires-Dist: open-aea-cli-ipfs==1.65.0
+Requires-Dist: texttable==1.6.7
+Requires-Dist: python-dotenv<0.22.0,>=0.14.5
+Requires-Dist: pytest<7.3.0,>=7.0.0
+Requires-Dist: coverage<8.0.0,>=6.4.4
+Provides-Extra: cli
+Requires-Dist: click<9,>=8.1.0; extra == "cli"
+Requires-Dist: open-aea-cli-ipfs==1.65.0; extra == "cli"
+Requires-Dist: texttable==1.6.7; extra == "cli"
+Requires-Dist: python-dotenv<0.22.0,>=0.14.5; extra == "cli"
+Requires-Dist: pytest<7.3.0,>=7.0.0; extra == "cli"
+Requires-Dist: coverage<8.0.0,>=6.4.4; extra == "cli"
+Provides-Extra: all
+Requires-Dist: click<9,>=8.1.0; extra == "all"
+Requires-Dist: texttable==1.6.7; extra == "all"
+Requires-Dist: open-aea-cli-ipfs==1.65.0; extra == "all"
+Requires-Dist: pytest<7.3.0,>=7.0.0; extra == "all"
+Requires-Dist: python-dotenv<0.22.0,>=0.14.5; extra == "all"
+Requires-Dist: coverage<8.0.0,>=6.4.4; extra == "all"
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: license
+Dynamic: project-url
+Dynamic: provides-extra
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+<h1 align="center">
+    <b>Open Autonomy Framework</b>
+</h1>
+
+<p align="center">
+  <a href="https://pypi.org/project/open-autonomy/">
+    <img alt="PyPI" src="https://img.shields.io/pypi/v/open-autonomy">
+  </a>
+  <a href="https://pypi.org/project/open-autonomy/">
+    <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/open-autonomy">
+  </a>
+  <a>
+    <img alt="PyPI - Wheel" src="https://img.shields.io/pypi/wheel/open-autonomy">
+  </a>
+  <a href="https://github.com/valory-xyz/open-autonomy/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/pypi/l/open-autonomy">
+  </a>
+  <a href="https://pypi.org/project/open-autonomy/">
+    <img alt="Downloads" src="https://img.shields.io/pypi/dm/open-autonomy">
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/valory-xyz/open-autonomy/actions/workflows/main_workflow.yml">
+    <img alt="Sanity checks and tests" src="https://github.com/valory-xyz/open-autonomy/workflows/main_workflow/badge.svg?branch=main">
+  </a>
+  <a href="">
+    <img alt="Codecov" src="https://img.shields.io/codecov/c/github/valory-xyz/open-autonomy">
+  </a>
+  <a href="https://img.shields.io/badge/lint-flake8-blueviolet">
+    <img alt="flake8" src="https://img.shields.io/badge/lint-flake8-yellow" >
+  </a>
+  <a href="https://github.com/python/mypy">
+    <img alt="mypy" src="https://img.shields.io/badge/static%20check-mypy-blue">
+  </a>
+  <a href="https://github.com/psf/black">
+    <img alt="Black" src="https://img.shields.io/badge/code%20style-black-black">
+  </a>
+  <a href="https://github.com/PyCQA/bandit">
+    <img alt="mypy" src="https://img.shields.io/badge/security-bandit-lightgrey">
+  </a>
+</p>
+
+**Open Autonomy** is a framework for the creation of **agent services**: off-chain
+autonomous services which run as a multi-agent-system (MAS) and offer enhanced functionalities
+on-chain. Agent services expand the range of operations that traditional
+smart contracts provide, making it possible to execute **arbitrarily complex operations**
+(such as machine-learning algorithms). Most importantly, agent services are
+**decentralized**, **trust-minimized**, **transparent**, and **robust**.
+
+
+## Get started developing agent services
+
+Read the [Open Autonomy documentation](https://docs.autonolas.network/open-autonomy/) to learn more about agent services. Follow the [set up](https://docs.autonolas.network/open-autonomy/guides/set_up/) and [quick start](https://docs.autonolas.network/open-autonomy/guides/quick_start/) guides to start building your own services.
+
+
+## For developers contributing to the framework: install from source
+
+- Ensure your machine satisfies the following requirements:
+
+    - Python `>= 3.8`
+    - [Tendermint](https://docs.tendermint.com/v0.34/introduction/install.html) `==0.34.19`
+    - [IPFS node](https://docs.ipfs.io/install/command-line/#official-distributions) `==v0.6.0`
+    - [Pip](https://pip.pypa.io/en/stable/installation/)
+    - [Pipenv](https://pipenv.pypa.io/en/latest/installation.html) `>=2021.x.xx`
+    - [Go](https://go.dev/doc/install) `==1.17.7`
+    - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
+    - [Docker Engine](https://docs.docker.com/engine/install/)
+    - [Docker Compose](https://docs.docker.com/compose/install/)
+    - [Skaffold](https://skaffold.dev/docs/install/#standalone-binary) `>= 1.39.1`
+    - [Gitleaks](https://github.com/zricethezav/gitleaks/releases/latest)
+
+- Clone the repository:
+
+      git clone git@github.com:valory-xyz/open-autonomy.git
+
+- Pull pre-built images:
+
+      docker pull valory/autonolas-registries:latest
+      docker pull valory/acn-node:latest
+      docker pull valory/contracts-amm:latest
+      docker pull valory/safe-contract-net:latest
+      docker pull valory/slow-tendermint-server:0.1.0
+
+- Create and launch a virtual environment. Also, run this during development,
+every time you need to re-create and launch the virtual environment and update
+the dependencies:
+
+      make new_env && pipenv shell
+
+  > :information_source: Note: we are using [atheris](https://github.com/google/atheris) in order to perform fuzzy testing.
+  > The dependency is not listed in the `Pipfile` because it is not supported on Windows.
+  > If you need to run or implement a fuzzy test, please manually install the dependency.
+  > If you are developing on Mac, please follow the extra steps described [here](https://github.com/google/atheris#mac).
+
+- Fetch packages:
+
+      autonomy packages sync --update-packages
+
+## Cite
+
+If you are using our software in a publication, please
+consider to cite it with the following BibTex entry:
+
+```
+@misc{open-autonomy,
+  Author = {David Minarsch and Marco Favorito and Viraj Patel and Adamantios Zaras and David Vilela Freire and Michiel Karrenbelt and 8baller and Ardian Abazi and Yuri Turchenkov and José Moreira Sánchez},
+  Title = {Open Autonomy Framework},
+  Year = {2021},
+}
+```

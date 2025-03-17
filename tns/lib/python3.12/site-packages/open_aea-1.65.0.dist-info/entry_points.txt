@@ -1,0 +1,2 @@
+[console_scripts]
+aea = aea.cli:cli
